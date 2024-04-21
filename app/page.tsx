@@ -1,8 +1,9 @@
 'use client';
 import { signIn, signOut, useSession } from 'next-auth/react';
 const IndexPage = () => {
-  const { data: session } = useSession();
-  console.log(session);
+  const { data: session, status } = useSession();
+
+  if (status === 'loading') return <div>Loading...</div>;
 
   return (
     <>
